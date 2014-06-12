@@ -135,10 +135,45 @@ class Mixpanel extends Base_MixpanelBase {
      * @param $token
      * @param array $options
      */
-    public function __construct($token, $options = array()) {
+    public function __construct($token, $options = array(), $people = null)
+    {
         parent::__construct($options);
-        $this->people = new Producers_MixpanelPeople($token, $options);
+
+        if(is_null($people))
+        {
+            $this->setPeople(new Producers_MixpanelPeople($token, $options));
+        }
+        else
+        {
+            if($people instanceof Producers_MixpanelPeople)
+            {
+                $this->setPeople($people);
+            }
+            else
+            {
+                throw new InvalidArgumentException("The people object supplied to Mixpanel::construct() must be an instance of Producers_MixpanelPeople");
+            }
+
+        }
+
         $this->_events = new Producers_MixpanelEvents($token, $options);
+    }
+
+    /**
+     * Sets the people property.
+     * @param Producers_MixpanelPeople $people
+     */
+    public function setPeople(Producers_MixpanelPeople $people)
+    {
+        $this->people = $people;
+    }
+
+    /**
+     * Returns the people property.
+     */
+    public function getPeople()
+    {
+        return $this->people;
     }
 
 

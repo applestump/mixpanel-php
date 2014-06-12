@@ -25,5 +25,17 @@ class MixpanelTest extends PHPUnit_Framework_TestCase {
         $this->assertInstanceOf("Producers_MixpanelPeople", $this->_instance->people);
     }
 
+    public function testCallingConstructorWithoutPeopleArgumentInstantiatesProducerClass()
+    {
+        $this->assertInstanceOf('Producers_MixpanelPeople', $this->_instance->people);
+
+    }
+
+    public function testCallingConstructorWithIncorrectPeopleArgumentThrowsException()
+    {
+        $this->setExpectedException('InvalidArgumentException');
+        Mixpanel::getInstance("token", array(), new stdClass());
+    }
+
 }
 
