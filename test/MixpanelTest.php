@@ -1,5 +1,9 @@
 <?php
 
+namespace Mixpanel\Test;
+
+use Mixpanel\Mixpanell;
+
 class MixpanelTest extends PHPUnit_Framework_TestCase {
 
     /**
@@ -20,21 +24,21 @@ class MixpanelTest extends PHPUnit_Framework_TestCase {
 
     public function testGetInstance() {
         $instance = Mixpanel::getInstance("token");
-        $this->assertInstanceOf("Mixpanel", $instance);
+        $this->assertInstanceOf('Mixpanel\Mixpanel', $instance);
         $this->assertEquals($this->_instance, $instance);
-        $this->assertInstanceOf("Producers_MixpanelPeople", $this->_instance->people);
     }
 
     public function testCallingConstructorWithoutPeopleArgumentInstantiatesProducerClass()
     {
-        $this->assertInstanceOf('Producers_MixpanelPeople', $this->_instance->people);
+        $this->assertInstanceOf('Mixpanel\Producer\People', $this->_instance->people);
 
     }
 
     public function testCallingConstructorWithIncorrectPeopleArgumentThrowsException()
     {
         $this->setExpectedException('InvalidArgumentException');
-        Mixpanel::getInstance("token", array(), new stdClass());
+        Mixpanel::__destroy();
+        Mixpanel::getInstance("abc", array(), "string");
     }
 
 }
