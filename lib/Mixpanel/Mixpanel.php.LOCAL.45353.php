@@ -130,11 +130,10 @@ class Mixpanel extends MixpanelBase {
      * @param $token
      * @param array $options
      */
-    public function __construct($token, $options = array(), People $people, Events $events)
-    {
+    public function __construct($token, $options = array()) {
         parent::__construct($options);
-        $this->setPeople($people);
-        $this->setEvents($events);
+        $this->_people = new People($token, $options);
+        $this->_events = new Events($token, $options);
     }
 
     /**

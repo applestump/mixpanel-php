@@ -133,8 +133,13 @@ class Mixpanel extends MixpanelBase {
     public function __construct($token, $options = array(), People $people, Events $events)
     {
         parent::__construct($options);
+<<<<<<< HEAD:lib/Mixpanel/Mixpanel.php
+        $this->_people = new People($token, $options);
+        $this->_events = new Events($token, $options);
+=======
         $this->setPeople($people);
         $this->setEvents($events);
+>>>>>>> php5-3:lib/Mixpanel/Mixpanel.php
     }
 
     /**

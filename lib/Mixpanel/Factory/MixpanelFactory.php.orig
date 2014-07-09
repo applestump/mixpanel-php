@@ -2,8 +2,11 @@
 
 namespace Mixpanel\Factory;
 use Mixpanel\Mixpanel as MixpanelClass;
+<<<<<<< HEAD
+=======
 use Mixpanel\Producer\People;
 use Mixpanel\Producer\Events;
+>>>>>>> php5-3
 
 /**
  * The MixpanelFactory class is used to return an instance of Mixpanel/Mixpanel
@@ -21,6 +24,11 @@ class MixpanelFactory {
      * @param $token
      * @param array $options
      */
+<<<<<<< HEAD
+    public function __construct($token, $options = array())
+    {
+        $this->instance = new MixpanelClass($token, $options = array());
+=======
     public function __construct($token, $options = array(), $people = null, $events = null)
     {
         //Set people property
@@ -38,6 +46,7 @@ class MixpanelFactory {
         }
 
         $this->instance = new MixpanelClass($token, $options = array(), $people, $events);
+>>>>>>> php5-3
     }
 
     /**

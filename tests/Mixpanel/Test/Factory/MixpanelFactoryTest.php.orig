@@ -27,11 +27,17 @@ class MixpanelFactoryTest extends \PHPUnit_Framework_TestCase {
     }
 
     public function testGetInstance() {
+<<<<<<< HEAD
+        $instance = $this->_factory->get("token");
+=======
         $instance = $this->_factory->get();
+>>>>>>> php5-3
         $this->assertInstanceOf('Mixpanel\Mixpanel', $instance);
         $this->assertEquals($this->_instance, $instance);
     }
 
+<<<<<<< HEAD
+=======
     public function testDefaultPeopleObjectIsInstantiated() {
         $mp = $this->_factory->get();
         $this->assertInstanceOf('Mixpanel\Producer\People', $mp->getPeople());
@@ -42,6 +48,7 @@ class MixpanelFactoryTest extends \PHPUnit_Framework_TestCase {
         $this->assertInstanceOf('Mixpanel\Producer\Events', $mp->getEvents());
     }
 
+>>>>>>> php5-3
 
 }
 
